@@ -11,19 +11,20 @@ import GEDFileGetter from './components/familyTree/GEDFileGetter';
     let ctx: GEDContext = {stateCounter: 0, onSelect: alert};
 
     if (keyStore) {
-      localStorage.setItem('keyStore', '');
+      setTimeout(() => {
+        localStorage.setItem('keyStore', '');
+      }, 2000);
       const ctx = JSON.parse(localStorage.getItem(keyStore) as string);
       ContextManager.getInstance().setContext(ctx);
       if (ctx.onSelect) ctx.onSelect();
-    } 
-
-    return (
-      <>
-         <GEDFileGetter { ...params}/>
-         keyStore && <FamilyTreeView { ...ctx}/>
-         !keyStore && <GEDFileGetter { ...params}/>
-      </>
-    )
+      return (
+        <FamilyTreeView { ...ctx}/>
+      )
+    } else {
+      return (
+        <GEDFileGetter { ...params}/>
+      )
+    }
   }
 
 
