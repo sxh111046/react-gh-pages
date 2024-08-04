@@ -1,0 +1,299 @@
+
+.family-tree-container {
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+    margin-top: 48px;
+    text-align: left;
+    height: 92vh;
+}
+
+.ged-buttons-bar-container {
+    position: fixed;
+    left:4px;
+    top: 4px;
+    width:100%;
+    height: 30px;
+    border-bottom: 1px solid lightgray;
+  }
+
+  .ged-button-getter {
+    margin-left: 12px;
+  }
+
+  .family-tree-view-container {
+    margin-top: 6px;
+    display: flex;
+    width: 100%;
+    height: 90vh;
+  }
+
+  .tree-index-container {
+    width: 16%;
+    float: left;
+    display: block;
+    font-size: medium;
+    margin-left: 8px;
+    margin-top: 44px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    
+  }
+  
+.tree-index-container-content {
+    width: 100%;
+    height: inherit;
+    margin-top: 10px;
+    margin-left: 8px;
+}
+  
+.tree-index-panel-container {
+    float: left;
+    width: 100%; 
+    height: 36px;  
+    margin-top: -24px;
+    width:100%;
+}
+
+.index-panel {
+    position:fixed;
+    margin-top: -20px;
+
+    .button-sorter {
+    float:left;
+    }
+}
+  
+.tree-index-search-panel {
+    float: right;
+    width: 140px;
+    height: 36px;
+    margin-top: 5px;
+    /*margin-top: 2px;*/
+
+    .tree-index-search-input {
+        width: 86px;
+    }
+}
+        
+.tree-index-search-image {
+    width: 16px;
+    height: 16px;
+    margin-left: 3px;
+    margin-top: 4px;
+    position: absolute;
+    content:url(../images/search.png);
+}
+
+.tree-index-search-image:hover {
+    cursor: pointer;
+}
+  
+.tree-index-container-list {
+    width: 100%;
+    float: left;
+    font-size: medium;
+    margin-left: 8px;
+    margin-top: 16px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    /* overflow-y: auto;
+    overflow-x: hidden;*/
+}
+
+.family-index-person {
+    margin-left: 8px;
+}
+
+.tree-index-person-text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.tree-index-person-text:hover {
+  background-color: lightblue;
+  border-radius: 3px;
+}
+
+.person-info-container {
+    margin-top: 20px;
+    float: left;
+    width: 18%;
+    height: 72vh;
+}
+
+.person-info-container-expaned {
+    width: 18%;
+}
+
+.person-info-container-collapse {
+    width: 2%;
+}
+
+.person-info-menu {
+    width: 48px;
+}
+  
+.person-info-container-content {
+   width: 100%;
+   height: 100%;  
+} 
+
+.person-info-panel-buttons {
+    width: 100%;
+    height: 36px;    
+}
+
+.person-info-hide-image {
+    content:url(../images/arrows-left.png);
+    width: 24px;
+    height: 20px;
+    margin-left: 4px;
+    float: left;
+}
+
+.person-info-hide-image:hover {
+    cursor: pointer;
+}
+
+.person-info-show-image {
+    content:url(../images/arrows-right.png);
+    width: 24px;
+    height: 20px;
+    margin-left: 4px;
+}
+
+.person-info-show-image:hover {
+    cursor: pointer;
+}
+
+.person-info {
+    margin-top: 20px;
+    margin-left: 10px;
+    float: left;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    overflow: auto;
+}
+
+.person-info-content {
+    width: 100%;
+    display: inline-block;
+    overflow-x: hidden;
+}
+
+.person-info-holder {
+    width:100%;
+    display:inline-block;
+    font-size: small;
+    margin-right: 4px;
+    z-index: -10;
+}
+
+.person-info-title {
+    vertical-align: top;
+    width: 36%;
+}
+
+.person-info-value {
+    width: 63%;
+}
+
+.tree-layout-container {
+    float: right;
+    margin-top: 2px;
+    /*margin-left: 40px;*/
+    background-image: url(../images/tree.jpg);
+    width: 82%;
+    height: 100%;
+    overflow: auto;
+    font-size: medium;
+    text-align: left;
+}
+
+.person-view {
+    display:inline-block;
+    align-content:start;
+    font-size: medium;
+  }
+
+.person-view:hover {
+  background-color: lightblue;
+  border-radius: 3px;
+}
+
+.tree-index-selected-person {
+    border: 2px solid blue;
+    border-radius: 3px;
+  }
+
+  .dropdown {
+    background-color: white;
+    z-index: 100;
+  }
+
+  .person-action-menu {
+    margin-left: 12px;
+    margin-top: 0px;
+    float: flex;
+  }
+
+  .person-action-menu:hover {
+    cursor: pointer;
+  }
+
+  .dropdown:hover {
+    z-index: 4;
+  }
+
+  .active {
+    z-index: 4;
+    cursor: pointer;
+  }
+
+  .dropdown-item {
+    font-size: medium;
+    color: navy;
+  }
+
+  .dropdown-item:hover {
+    background-color: lightblue;
+
+  }
+
+  .collapse-image-container {
+    margin-left: 4px;
+    float:right;
+  }
+
+  .expand-image {
+    float: right;
+    content:url(../images/plus.png);
+    width: 18px;
+    height: 18px;
+  }
+
+  .expand-image:hover {
+    background-color: lightblue;
+  }
+
+  .collapse-image {
+    float: right;
+    content:url(../images/minus.png);
+    width: 18px;
+    height: 18px;
+  }
+
+  .collapse-image:hover {
+    background-color: lightblue;
+  }
+
+  .react-flow__node.selected {
+    border: 2px solid blue;
+    border-radius: 3px;
+  }
+
+    
+
