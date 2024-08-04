@@ -67,7 +67,7 @@ function PersonSelectionMenu(props: SelectionMenuProps): JSX.Element {
             placeholder={'Select...'}
             autoFocus={true}
             dropdownGap={2}
-        >
+        > 
         </Select>}
     </div>
     
