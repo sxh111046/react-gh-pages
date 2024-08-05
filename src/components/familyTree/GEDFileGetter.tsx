@@ -30,7 +30,11 @@ function GEDFileGetter(params: GEDContext) {
 
     function launchFamilyTree() {
         localStorage.setItem('keyStore', keyStore);
-        window.open(window.location.href + 'index.html', '_self');
+        let url = window.location.href;
+        if (!url.includes('index.html')) {
+            url += 'index.html';
+        }
+        window.open(url, '_self');
     }
 
     function handleChange (selectorFiles: FileList)
