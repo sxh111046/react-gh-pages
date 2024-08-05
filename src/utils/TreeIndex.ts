@@ -252,7 +252,29 @@ class TreeIndex {
 			console.log(p.getName());
 		})
 		treeRoots = tempRoots;
+		this.determineRootPerson(treeRoots);
 		return treeRoots;
+	}
+
+	determineRootPerson(treeRoots: Person[]) {
+		treeRoots.sort((p1, p2) => {
+			const p1CountHolder = p1.decendentscount();
+			const p2CountHolder = p2.decendentscount();
+			const p1Children = p1CountHolder.reduce((a, b) => a + b, 0);
+			const p2Children = p2CountHolder.reduce((a, b) => a + b, 0);
+			if (p1Children  > p2Children)  {
+				return -1;
+			  } else if (p1Children < p2Children) {
+				return 1;
+			  } else if (p1Children === p2Children) {
+				return 0;
+			  } else {
+				return -1;
+			  }
+		});
+		const ctx = ContextManager.getInstance().getContext();
+		// alert(treeRoots[0].getName());
+		ctx.root = treeRoots[0].getID();
 	}
 
 	setNewSubtree(pID: string, indexSelection?: boolean) {
