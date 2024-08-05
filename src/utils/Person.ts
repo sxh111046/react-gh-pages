@@ -324,6 +324,25 @@ class Person {
         return children;
     }
 
+    public decendentscount(childNodes?: Array<number>) {
+        if (!childNodes) childNodes = new Array<number>();
+        const children = this.getChildren();
+        childNodes.push(children.length);
+        for (let i = 0; i < children.length; i++) {
+            const child = children[i];
+            console.log("     dec child: " + child.getName());
+            if (child.hasChildren()) {
+                child.countChildren(childNodes);
+            } 
+        }
+        return childNodes;
+    }
+          
+    private countChildren(childNodes: Array<number>): Array<number> {
+        childNodes.push(this.getChildren().length);
+        return this.decendentscount(childNodes);
+    }   
+
     public spouseCount(): number
     {
         let count = 0;
