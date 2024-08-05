@@ -1,1 +1,2 @@
-This is a basic implemntation of a family tree viewer using react and react flow. The implementation is fully static with no server interaction.
+This is a basic prototype of a family tree viewer using react and react flow. The implementation is fully static with no server interaction. It's main goal is to provide ease of navigation across mid and large family trees.
+It can read and parse a GEDCOM file and display it as a family tree. By default the root of the tree is the person who has the largest number of decendents. 
