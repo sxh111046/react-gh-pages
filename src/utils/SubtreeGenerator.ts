@@ -143,10 +143,14 @@ class SubtreeGenerator {
           lastGen = true;		 
       }
       if(!lastGen){
-       const parent = p.getParent(TreeIndex.getInstance().getRootPerson());
-       if (parent)
-         this.setAncestors(parent);
-      }
+        const ctx = ContextManager.getInstance().getContext();
+        let parent = undefined;
+        if (ctx.root) {
+          parent = p.getParent(TreeIndex.getInstance().getPerson(ctx.root));
+          if (parent)
+            this.setAncestors(parent);
+          }
+        }
     }
 
     private addFromConnectorEntry(pID: string) {
