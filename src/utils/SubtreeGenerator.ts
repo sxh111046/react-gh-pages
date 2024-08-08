@@ -36,28 +36,27 @@ class SubtreeGenerator {
         this.subtreeNodes.push(this.addPersonEntry(p, type));
       }
       if (!this.ctx.collapsedSubtrees?.includes(p)) {
-        for (let sp = 0; sp < p.spouseCount(); sp++) {
-          const spouse = p.getSpouse(sp);
+        const families = p.getFamilies();
+        let spouse = undefined;
+        families.forEach(fam => {
+          spouse = fam.getSpouse(p);
           if (spouse) {
             spouse.setGen(p.getGen());
             this.subtreeNodes.push(this.addPersonEntry(spouse, 'spouse'));
-            const fam = p.getSpouseFamily(sp);
-
-            if (fam) {
-              for (let i = 0; i < fam.childCount(); i++){
-                const child = fam.getChildAt(i);
-                if (child) {
-                  this.addToConnectorEntry(p.getID(), child.getID());
-                  this.addFromConnectorEntry(spouse.getID());
-                  this.addToConnectorEntry(spouse.getID(), child.getID());
-                  child.setGen(p.getGen() + 2);
-                  this.generate(child);
-                }
-              }
+          }
+          for (let i = 0; i < fam.childCount(); i++) {
+            const child = fam.getChildAt(i);
+            if (child) {
+              this.addToConnectorEntry(p.getID(), child.getID());
+              if (spouse) this.addFromConnectorEntry(spouse.getID());
+              if (spouse) this.addToConnectorEntry(spouse.getID(), child.getID());
+              child.setGen(p.getGen() + 2);
+              this.generate(child);
             }
           }
-        }
+        })   
       }
+      
       this.ctx.connectors = this.connectors;
       return this.subtreeNodes;
     }
