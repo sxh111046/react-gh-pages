@@ -2,6 +2,7 @@
 import FamilyTreeParser from './FamilyTreeParser';
 import TreeIndex from './TreeIndex';
 import ContextManager from './ContextManager';
+import ErrorHandler from './ErrorHandler';
 
 class TreeBuilder {
 
@@ -10,6 +11,9 @@ class TreeBuilder {
           const context =  ContextManager.getInstance().getContext();
           const parser: FamilyTreeParser = new FamilyTreeParser(context.fileContent as string);
           parser.load();
+          if (parser.getMembers().size === 0) {
+            new ErrorHandler("this tree does not have membvers");
+          }
           const treeIndex = new TreeIndex(parser.getMembers());
           treeIndex.initialize();
           context.familyIndex = treeIndex.getFamilyIndex();
@@ -20,8 +24,7 @@ class TreeBuilder {
           context.initialized = true;
         }
         catch(ex) {
-            localStorage.setItem('keyStore', '');
-            alert('unexpected error occured during tree building');
+            new ErrorHandler('unexpected error occured during tree building', ex)
         }
     }
 }
