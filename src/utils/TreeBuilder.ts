@@ -12,7 +12,7 @@ class TreeBuilder {
           const parser: FamilyTreeParser = new FamilyTreeParser(context.fileContent as string);
           parser.load();
           if (parser.getMembers().size === 0) {
-            new ErrorHandler("this tree does not have membvers");
+            new ErrorHandler("this family tree does not have members");
           }
           const treeIndex = new TreeIndex(parser.getMembers());
           treeIndex.initialize();
