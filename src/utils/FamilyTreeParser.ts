@@ -38,8 +38,8 @@ class FamilyTreeParser {
 		this.noteMark = false;
 		this.curLine = {};
 		this.header = {};
-		this.rootPerson = new Person(this);
-		this.treeRoot = new Person(this);
+		this.rootPerson = new Person();
+		this.treeRoot = new Person();
 		this.firstGen = 0;
 		this.ancestor = new Array<boolean>();
 		this.subtrees = new Map<string, Person>();
@@ -218,7 +218,7 @@ class FamilyTreeParser {
 		let histNote = false;
 		let healthNote = false;
 		
-		const p:Person = new Person(this);
+		const p:Person = new Person();
 		const pData:PersonData = p.getData();
 		pData.id = this.parseID();
 		this.curLine = this.getNextLine();
