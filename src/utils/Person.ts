@@ -61,12 +61,14 @@ class Person {
     }
 
     public isRelated(rootPerson: Person): Boolean {
-        if (this.isLinked()) {
+        if (rootPerson && this.isLinked()) {
             const pFamily = this.personData.parentFamily;
             if (pFamily) {
                 const wife = pFamily.getData().wife;
                 const husband = pFamily.getData().husband;
-                if (wife?.getID() === rootPerson.getID() || husband?.getID() === rootPerson.getID()) {
+                if (wife && wife.getID() === rootPerson.getID()) {
+                    return true;
+                } else if (husband &&  husband.getID() === rootPerson.getID()) {
                     return true;
                 }
                 else if (wife && wife.isRelated(rootPerson)) {
