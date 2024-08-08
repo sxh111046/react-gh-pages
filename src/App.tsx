@@ -10,6 +10,8 @@ import GEDFileGetter from './components/familyTree/GEDFileGetter';
     const keyStore = localStorage.getItem('keyStore');
     let ctx: GEDContext = {stateCounter: 0, onSelect: alert};
 
+    // localStorage.setItem('keyStore', '');
+
     if (keyStore) {
       setTimeout(() => {
         localStorage.setItem('keyStore', '');

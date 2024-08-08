@@ -226,7 +226,9 @@ class TreeIndex {
 	buildTrees(): Array<Person> {
 		// const ctx =  ContextManager.getInstance().getContext();
 		let treeRoots:Array<Person> = [];
+		let rootID = '';
 		this.personIndex.forEach((p, id)=> {
+			if (!rootID) rootID = p.getID();
 			if(!p.isLinked() && !p.isSpouseLink()) {
 				treeRoots.push(p);
 			}
@@ -238,25 +240,26 @@ class TreeIndex {
 			}
 		})
 		treeRoots = tempRoots;
-		tempRoots = [];
-		treeRoots.forEach((p) => {
-			treeRoots.forEach(root => {
-				if (p !== root) {
-					if(p.isWifeOf(root)) {
+		
+		if (tempRoots.length > 1) {
+			tempRoots = [];
+			treeRoots.forEach((p) => {
+				treeRoots.forEach(root => {
+					if (p.isWifeOf(root)) {
 						tempRoots.push(root);
 					}
-				}
+				})
 			})
-		})
+		}
 		tempRoots.forEach(p => {
 			console.log(p.getName());
 		})
 		treeRoots = tempRoots;
-		this.determineRootPerson(treeRoots);
+		this.determineRootPerson(treeRoots, rootID);
 		return treeRoots;
 	}
 
-	determineRootPerson(treeRoots: Person[]) {
+	determineRootPerson(treeRoots: Person[], rootID: string) {
 		treeRoots.sort((p1, p2) => {
 			const p1CountHolder = p1.decendentscount();
 			const p2CountHolder = p2.decendentscount();
@@ -273,8 +276,11 @@ class TreeIndex {
 			  }
 		});
 		const ctx = ContextManager.getInstance().getContext();
-		// alert(treeRoots[0].getName());
-		ctx.root = treeRoots[0].getID();
+		if (treeRoots.length > 0) {
+			ctx.root = treeRoots[0].getID();
+		}  else {
+			ctx.root = rootID;
+		}
 	}
 
 	setNewSubtree(pID: string, indexSelection?: boolean) {
