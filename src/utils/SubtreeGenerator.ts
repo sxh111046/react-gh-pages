@@ -6,22 +6,13 @@ import TreeIndex from './TreeIndex';
 
 class SubtreeGenerator {
 
-    private ancestor: boolean[] = new Array<boolean>(24);
     private firstGen = 0;
     private ctx = ContextManager.getInstance().getContext();
     private connectors = new Map<string, string[]>();
     private subtreeNodes = new Array<PersonViewProps>();
 
-    private resetAncestors() {
-      for(let i = 2; i < this.ancestor.length; i++)
-        this.ancestor[i] = false;
-    }
-
-
     public generate(p: Person): PersonViewProps[] {
-      this.resetAncestors();
-      this.setAncestors(p);
-      
+     
       const type = (p.getGen() > 0) ? 'child' : 'person ';
 
       this.addFromConnectorEntry(p.getID());
@@ -126,34 +117,7 @@ class SubtreeGenerator {
       const pvProps: PersonViewProps = {person: p as Person, type: type, gen: p.getGen(), hyperlink: true};
       return pvProps;
     }
-
-    private setAncestors(p: Person) {
-      if (!p) return;
-      const gen = p.getData().gen as number;
- 
-      if (gen === this.firstGen) {
-        this.ancestor[gen] = true;
-        return;
-      }
-      let lastGen = false;
-      if (gen > 0)
-       this.ancestor[gen-1] = true;
-      if(p.isLastChild()){
-        this.ancestor[gen -1] = false;
-        if (gen === this.firstGen + 1)
-          lastGen = true;		 
-      }
-      if(!lastGen){
-        const ctx = ContextManager.getInstance().getContext();
-        let parent = undefined;
-        if (ctx.root) {
-          parent = p.getParent(TreeIndex.getInstance().getPerson(ctx.root));
-          if (parent)
-            this.setAncestors(parent);
-          }
-        }
-    }
-
+   
     private addFromConnectorEntry(pID: string) {
       if (!this.connectors.has(pID)) {
         this.connectors.set(pID, []);
