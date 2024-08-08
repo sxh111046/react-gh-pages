@@ -128,6 +128,7 @@ class SubtreeGenerator {
     }
 
     private setAncestors(p: Person) {
+      if (!p) return;
       const gen = p.getData().gen as number;
  
       if (gen === this.firstGen) {
