@@ -12,6 +12,7 @@ class Person {
     {
         this.familyTree = ft;
         this.personData.gen = 0;
+        this.personData.decebdentCount = -1;
         this.personData.sFamilyID = new Array<string>();
         this.personData.spouseFamily = new Array<Family>();
     }
@@ -326,8 +327,15 @@ class Person {
         return children;
     }
 
-    public decendentscount(childNodes?: Array<number>) {
-        if (!childNodes) childNodes = new Array<number>();
+    public decendentscount(childNodes?: Array<number>): Array<number> {
+        if (!childNodes) {
+            childNodes = new Array<number>();
+            const dc = this.getData().decebdentCount;
+            if (dc && dc  >= 0) {
+                childNodes.push(dc);
+                return childNodes;
+            }
+        }
         const children = this.getChildren();
         childNodes.push(children.length);
         for (let i = 0; i < children.length; i++) {
@@ -337,6 +345,9 @@ class Person {
                 child.countChildren(childNodes);
             } 
         }
+        let dc = childNodes.reduce((a, b) => a + b, 0);
+        if (!dc) dc = 0;
+        this.getData().decebdentCount = dc
         return childNodes;
     }
           

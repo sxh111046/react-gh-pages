@@ -119,7 +119,13 @@
 
       function addEdge(from: string, to: string[]) {
         to.forEach((target) =>  {
-          initialEdges.push( { id: 'to-' + from + '-' +  target, source: from, target: target, type: 'step', animated: false })
+          const key = 'to-' + from + '-' +  target;
+          const edge = { id: key, source: from, target: target, type: 'step', animated: false };
+          if (!initialEdges.includes(edge)) {
+            console.log('edge ' + key);
+            initialEdges.push(edge);
+          }
+          
         })
       }
 

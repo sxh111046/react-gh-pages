@@ -23,6 +23,7 @@ export interface PersonData {
     religion?: string;
     occupation?: string;
     education?: string;
+    decebdentCount?: number;
     lastUpdate?: Date;
     bookmark?: string;
 }
