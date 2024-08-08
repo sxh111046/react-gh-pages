@@ -4,13 +4,11 @@ import {PersonData} from '../types/PersonData';
 import ContextManager from "./ContextManager";
 
 class Person {
-    private familyTree?: FamilyTreeParser;
     private personData: PersonData = {};
-    private ctxManager: ContextManager = ContextManager.getInstance();
+    // private ctxManager: ContextManager = ContextManager.getInstance();
 
-    constructor (ft?: FamilyTreeParser)
+    constructor ()
     {
-        this.familyTree = ft;
         this.personData.gen = 0;
         this.personData.decebdentCount = -1;
         this.personData.sFamilyID = new Array<string>();
@@ -42,8 +40,8 @@ class Person {
 
     public isRoot(): boolean
     {
-        const rootId = this.ctxManager.getContext().root
-        return (this.personData.id === rootId);
+        const ctx = ContextManager.getInstance().getContext();
+        return (this.personData.id === ctx.root);
     }
 
     public isLinked(): boolean
