@@ -126,7 +126,7 @@ const PersonActionMenu: React.FC = (): JSX.Element => {
           dismissHandler(e)
         }
       >
-        <div>Action Items</div>
+        <div>Layout Options</div>
         {showDropDown && (
           <DropDown
             items={items()}

@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 import {GEDContext} from '../../types/GEDContext';
 import ContextManager  from '../../utils/ContextManager';
+import '../../styles/FamilyTreeView.css'
 
 const panelStyle = {
     color: '#777',
     fontSize: 12,
-    };
-
-    const buttonStyle = {
-    fontSize: 12,
-    marginRight: 5,
-    marginTop: 5,
     };
 
 function GEDFileGetter(params: GEDContext) {
@@ -65,7 +60,7 @@ function GEDFileGetter(params: GEDContext) {
             </div>
             <div className="ged-buttons-bar-container">
                 <div id="openGedFile" className="ged-buttons-bar" style={panelStyle}>
-                    <button className="ged=button-getter" onClick={openGedFile} style={buttonStyle}>
+                    <button className="button-style" onClick={openGedFile} >
                     Open GED File
                     </button>
                 </div>
