@@ -2,12 +2,12 @@ import React, {Children, useContext, useState, useMemo, useEffect} from 'react';
 import Person from '../utils/Person';
 import { FamilyIndex } from './FamilyIndex';
 import { PersonIndex } from './PersonIndex';
-import Family from '../utils/Family';
-// import {PersonViewProps} from '../components/familyTree/PersonView';
+import { Header } from './Header';
 
 export interface GEDContext {
     gedFileName?: string;
     fileContent?: string;
+    header?: Header;
     root?: string;
     subtrees?: string[];
     treeRoots?: Person[];

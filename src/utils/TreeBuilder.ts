@@ -16,6 +16,7 @@ class TreeBuilder {
                 new ErrorHandler("this family tree does not have members");
             }
             const treeIndex = new TreeIndex(parser.getMembers());
+            context.header = parser.getHeader();
             treeIndex.initialize();
             context.familyIndex = treeIndex.getFamilyIndex();
             context.personIndex = treeIndex.getPersonIndex();

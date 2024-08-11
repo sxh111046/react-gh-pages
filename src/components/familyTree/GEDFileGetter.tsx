@@ -63,10 +63,15 @@ function GEDFileGetter(params: GEDContext) {
             <div>
                 <input hidden id="fileInput" type="file" onChange={ (e) => handleChange(e.target.files as FileList) } />
             </div>
-            <div id="openGedFile" className="ged-buttons-bar-container" style={panelStyle}>
-                <button className="ged=button-getter" onClick={openGedFile} style={buttonStyle}>
-                Open GED File
-                </button>
+            <div className="ged-buttons-bar-container">
+                <div id="openGedFile" className="ged-buttons-bar" style={panelStyle}>
+                    <button className="ged=button-getter" onClick={openGedFile} style={buttonStyle}>
+                    Open GED File
+                    </button>
+                </div>
+                <div className="ged-file-desc">
+                    {ctxManager.getContext().header?.gedFile}
+                </div>
             </div>
         </>
     );

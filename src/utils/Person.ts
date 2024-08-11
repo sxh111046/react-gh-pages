@@ -338,7 +338,7 @@ class Person {
         childNodes.push(children.length);
         for (let i = 0; i < children.length; i++) {
             const child = children[i];
-            console.log("     dec child: " + child.getName());
+            // console.log("     dec child: " + child.getName());
             if (child.hasChildren()) {
                 child.countChildren(childNodes);
             } 
