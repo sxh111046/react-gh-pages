@@ -69,8 +69,11 @@
     position:fixed;
     margin-top: -20px;
 
-    .button-sorter {
+    .button-sorter-container {
     float:left;
+    }
+    .button-sorter:hover {
+      cursor: pointer;
     }
 }
   
@@ -297,6 +300,19 @@
   }
 
   .collapse-image:hover {
+    background-color: lightblue;
+  }
+
+  .button-style {
+    font-size: 12;
+    margin-right: 5px;
+    margin-top: 5px;
+    border: 1px solid lightgray;
+    border-radius: 3px;
+  }
+
+  .button-style:hover {
+    cursor: pointer;
     background-color: lightblue;
   }
 

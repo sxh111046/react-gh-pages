@@ -15,12 +15,6 @@ import SubtreeGenerator from '../../utils/SubtreeGenerator';
     fontSize: 12,
   };
 
-  const buttonStyle = {
-    fontSize: 12,
-    marginRight: 5,
-    marginTop: 5,
-  };
-
   function TreeIndexView(props: GEDContext) {
 
     const [sortOrder, setSortOrder] = useState('person');
@@ -127,11 +121,11 @@ import SubtreeGenerator from '../../utils/SubtreeGenerator';
       return (
         <div className="tree-index-panel-container">
               <div className="index-panel" style={panelStyle}>
-                <div className="button-sorter">
-                  {byPerson &&  <button onClick={sortByFamily} style={buttonStyle}>
+                <div className="button-sorter-container">
+                  {byPerson &&  <button className="button-style" onClick={sortByFamily} >
                                   Sort by Family
                                 </button> }
-                  {byFamily &&   <button  onClick={sortByPerson} style={buttonStyle}>
+                  {byFamily &&   <button  className="button-style" onClick={sortByPerson} >
                                   Sort by Person
                                 </button>}  
                 </div>
