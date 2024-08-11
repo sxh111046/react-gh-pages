@@ -194,9 +194,12 @@ class TreeIndex {
 		else if(p.hasParentBranch()) {
 			const fam = p.getAncestorFamily();
 			const ctx = ContextManager.getInstance().getContext();
-			ctx.subtreeRoot = fam?.getData().husband;
-          	ctx.selectedPerson = p;
-			return fam?.getData().husband;
+			const husband = fam?.getData().husband;
+			if (husband) {
+				ctx.subtreeRoot = husband;
+          		ctx.selectedPerson = p;
+				return husband;
+			}
 		}
 		const rootId = ContextManager.getInstance().getContext().root;
 		return this.getPerson(rootId as string);
@@ -252,7 +255,7 @@ class TreeIndex {
 			})
 		}
 		tempRoots.forEach(p => {
-			console.log(p.getName());
+			// console.log(p.getName());
 		})
 		treeRoots = tempRoots;
 		this.determineRootPerson(treeRoots, rootID);
@@ -294,7 +297,8 @@ class TreeIndex {
 			selectedPerson.getRelatedSpouse(ctx.subtreeRoot as Person) !== undefined;
 		if (isSpouse && selectedPerson.hasParentBranch()) {
 		  const ancestorFamily = selectedPerson.getAncestorFamily();
-		  ctx.subtreeRoot = ancestorFamily?.getData().husband;
+		  const husband = ancestorFamily?.getData().husband;
+		  if (husband) ctx.subtreeRoot = ancestorFamily?.getData().husband;
 		  ctx.selectedPerson = selectedPerson;
 		}
 		else if (pID !== subtreeRootID && isRelated && !indexSelection ) {

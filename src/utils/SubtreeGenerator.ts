@@ -6,7 +6,7 @@ import TreeIndex from './TreeIndex';
 
 class SubtreeGenerator {
 
-    private firstGen = 0;
+    // private firstGen = 0;
     private ctx = ContextManager.getInstance().getContext();
     private connectors = new Map<string, string[]>();
     private subtreeNodes = new Array<PersonViewProps>();
@@ -106,6 +106,10 @@ class SubtreeGenerator {
 
     public getConnectors(): Map<string, string[]> {
         return this.connectors;
+    }
+
+    public setConnectors(connectors: Map<string, string[]>) {
+      this.connectors = connectors
     }
 
     private addPersonEntry(p: Person, type: string): PersonViewProps {
