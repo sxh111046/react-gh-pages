@@ -121,12 +121,22 @@
         to.forEach((target) =>  {
           const key = 'to-' + from + '-' +  target;
           const edge = { id: key, source: from, target: target, type: 'step', animated: false };
-          if (!initialEdges.includes(edge)) {
-            console.log('edge ' + key);
+          if (!isDuplicate(edge)) {
+            // console.log('edge ' + edge.id);
             initialEdges.push(edge);
           }
           
         })
+      }
+
+      function isDuplicate(edge: Edge): boolean  {
+        for (let i = 0; i < initialEdges.length; i++) {
+          const eg = initialEdges[i];
+          if (edge.id === eg.id && edge.source === eg.source) {
+              return true;
+          }
+        }
+        return false;
       }
 
       function updatePersonInfo() {

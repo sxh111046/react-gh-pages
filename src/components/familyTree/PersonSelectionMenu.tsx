@@ -64,7 +64,7 @@ function PersonSelectionMenu(props: SelectionMenuProps): JSX.Element {
             valueField="id"
             onChange={(values) => setValues(values)}
             onDropdownClose={onClose}
-            placeholder={'Select...'}
+            placeholder={'Select Person...'}
             autoFocus={true}
             dropdownGap={2}
         > 
