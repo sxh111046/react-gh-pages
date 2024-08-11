@@ -17,6 +17,15 @@
     border-bottom: 1px solid lightgray;
   }
 
+  .ged-buttons-bar {
+    float: left;
+  }
+
+  .ged-file-desc {
+    margin-top: 6px;
+    float:inline-start;
+  }
+
   .ged-button-getter {
     margin-left: 12px;
   }

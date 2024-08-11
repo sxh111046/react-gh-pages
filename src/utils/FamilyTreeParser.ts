@@ -423,6 +423,10 @@ class FamilyTreeParser {
 		return this.families;
 	}
 
+	public getHeader(): Header {
+		return this.header;
+	}
+
 }
 
 export default FamilyTreeParser;
