@@ -1,6 +1,4 @@
 import React from 'react';
-// import ReactFlowProvider from 'reactflow';
-// import logo from '../../logo.svg';
 import '../../styles/FamilyTreeView.css';
 import { GEDContext } from '../../types/GEDContext';
 import ContextManager from '../../utils/ContextManager';

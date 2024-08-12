@@ -10,12 +10,13 @@ function PersonInfo() {
     
     const selectedPerson = ctx.selectedPerson;
 
-    const [, setPersonChanged] = useState(selectedPerson);
+    const [, setStateCounter] = useState(0);
     const [showPanel, setShowPanel] = useState(true);
 
     function onPersonChange() {
+        ContextManager.getInstance().upStateCounter();
         const ctx = ContextManager.getInstance().getContext();
-        setPersonChanged(ctx.selectedPerson);
+        setStateCounter(ctx.stateCounter as number);
     }
 
     function openPanel() {

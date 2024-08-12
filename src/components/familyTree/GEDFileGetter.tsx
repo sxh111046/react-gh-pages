@@ -14,8 +14,6 @@ function GEDFileGetter(params: GEDContext) {
 
      const ctxManager = ContextManager.getInstance();
 
-     // const isInitialized = localStorage.getItem("initTree") === 'true';
-
      const keyStore = 'familyTree';
 
     function openGedFile() {
@@ -43,7 +41,6 @@ function GEDFileGetter(params: GEDContext) {
         ctxManager.setGEDFileName(file.name);
         ctxManager.setFileContent(fileContent);
         ctxManager.setInitialized(true);
-        ctxManager.setRoot('1');
         const params = ctxManager.getContext();
         setInitialized(true);
         localStorage.setItem(keyStore, JSON.stringify(params));
