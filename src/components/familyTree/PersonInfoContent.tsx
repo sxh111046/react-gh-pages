@@ -1,41 +1,23 @@
-import React, {useState} from 'react';
+import React, {useState, useRef} from 'react';
 import ContextManager from '../../utils/ContextManager';
 import { PersonData } from '../../types/PersonData';
-import PersonActionMenu from './PersonActionMenu';
-import PersonInfoContent from './PersonInfoContent';
 
-function PersonInfo() {
+function PersonInfoContent() {
 
     const ctx = ContextManager.getInstance().getContext();
-    // ContextManager.getInstance().addOnSelectedChanged(onPersonChange);
+    ContextManager.getInstance().addOnSelectedChanged(onPersonChange);
     
     const selectedPerson = ctx.selectedPerson;
 
-    // const [, setStateCounter] = useState(0);
-    const [showPanel, setShowPanel] = useState(true);
-    /*
+    const personInfoRef = useRef<HTMLDivElement>(null);
+    console.log(personInfoRef.current);
+
+    const [, setStateCounter] = useState(0);
+    
     function onPersonChange() {
         ContextManager.getInstance().upStateCounter();
         const ctx = ContextManager.getInstance().getContext();
         setStateCounter(ctx.stateCounter as number);
-    }*/
-
-    function openPanel() {
-        const personInfo = document.getElementById('personInfoContainer');
-        if (personInfo) {
-            personInfo.classList.add('person-info-container-expaned');
-            personInfo.classList.remove('person-info-container-collapse');
-        }
-        setShowPanel(true);
-    }
-
-    function closePanel() {
-        const personInfo = document.getElementById('personInfoContainer');
-        if (personInfo) {
-            personInfo.classList.remove('person-info-container-expaned');
-            personInfo.classList.add('person-info-container-collapse');
-        }
-        setShowPanel(false);
     }
 
     function getNoteLine(note: string): JSX.Element {
@@ -81,25 +63,13 @@ function PersonInfo() {
     const data = selectedPerson?.getData();
     if (data && data?.id) {
         return (
-        <div className="person-info-container-content">
-            <div className="person-info-panel-buttons">
-                <div>
-                    {showPanel &&  <img id="hideImage" alt=' ' className="person-info-hide-image" onClick={closePanel}/> }
-                    {showPanel && <PersonActionMenu />}
-                    {!showPanel &&  <img id="showImage" className="person-info-show-image" onClick={openPanel}/> }
-                </div>
+            <div ref={personInfoRef} className='person-info-content'>
+                {getPersonInfoSection(data)}
             </div>
-            
-            <div className='person-info'>
-                {showPanel && <div className='person-info-content'>
-                    <PersonInfoContent />
-                </div>}
-            </div>
-        </div>
         )
     } else {
         return (<div></div>);
     }
 }
 
-export default PersonInfo
+export default PersonInfoContent
