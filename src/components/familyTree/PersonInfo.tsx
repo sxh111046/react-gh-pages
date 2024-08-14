@@ -2,22 +2,23 @@ import React, {useState} from 'react';
 import ContextManager from '../../utils/ContextManager';
 import { PersonData } from '../../types/PersonData';
 import PersonActionMenu from './PersonActionMenu';
+import PersonInfoContent from './PersonInfoContent';
 
 function PersonInfo() {
 
     const ctx = ContextManager.getInstance().getContext();
-    ContextManager.getInstance().addOnSelectedChanged(onPersonChange);
+    // ContextManager.getInstance().addOnSelectedChanged(onPersonChange);
     
     const selectedPerson = ctx.selectedPerson;
 
-    const [, setStateCounter] = useState(0);
+    // const [, setStateCounter] = useState(0);
     const [showPanel, setShowPanel] = useState(true);
-
+    /*
     function onPersonChange() {
         ContextManager.getInstance().upStateCounter();
         const ctx = ContextManager.getInstance().getContext();
         setStateCounter(ctx.stateCounter as number);
-    }
+    }*/
 
     function openPanel() {
         const personInfo = document.getElementById('personInfoContainer');
@@ -91,7 +92,7 @@ function PersonInfo() {
             
             <div className='person-info'>
                 {showPanel && <div className='person-info-content'>
-                    {getPersonInfoSection(data)}
+                    <PersonInfoContent />
                 </div>}
             </div>
         </div>
