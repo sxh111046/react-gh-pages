@@ -10,7 +10,7 @@ class TreeIndex {
 
 	private personIndex: Map<string, Person>;
 	private familyIndex: FamilyIndex[];
-	private rootPerson: Person = new Person();
+	// private rootPerson: Person = new Person();
 
     public constructor(pList: Map<string, Person>)
 	{
@@ -30,8 +30,8 @@ class TreeIndex {
 		// this.dumpFamilyIndex();
 		this.familyIndex = this.sortFamilyIndex();
 		ContextManager.getInstance().getContext().familyIndex = this.familyIndex;
-		const rootId = ContextManager.getInstance().getContext().root; 
-		this.rootPerson = this.getPerson(rootId as string) as Person;
+		// const rootId = ContextManager.getInstance().getContext().root; 
+		// this.rootPerson = this.getPerson(rootId as string) as Person;
 	}
 
 	addFamilyIndex(ix: Person)
@@ -162,11 +162,8 @@ class TreeIndex {
 	}
 
 	public getRootPerson(): Person {
-		if (!this.rootPerson.getID()) {
-			const ctx = ContextManager.getInstance().getContext();
-			this.rootPerson = this.getPerson(ctx.root as string) as Person;
-		}
-		return this.rootPerson;
+		const ctx = ContextManager.getInstance().getContext();
+		return this.getPerson(ctx.root as string) as Person;
 	}
 
 	public getSubtreeRoot(p: Person): Person | undefined {
