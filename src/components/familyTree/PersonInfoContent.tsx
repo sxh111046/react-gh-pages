@@ -10,7 +10,6 @@ function PersonInfoContent() {
     const selectedPerson = ctx.selectedPerson;
 
     const buttonRef = useRef<HTMLButtonElement>(null);
-    //console.log(personInfoRef.current);
 
     const [, setStateCounter] = useState(0);
     
