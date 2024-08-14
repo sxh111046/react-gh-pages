@@ -9,12 +9,23 @@ function PersonInfoContent() {
     
     const selectedPerson = ctx.selectedPerson;
 
-    const personInfoRef = useRef<HTMLDivElement>(null);
-    console.log(personInfoRef.current);
+    const buttonRef = useRef<HTMLButtonElement>(null);
+    //console.log(personInfoRef.current);
 
     const [, setStateCounter] = useState(0);
     
     function onPersonChange() {
+        if (buttonRef.current) {
+            buttonRef.current.click();
+        } else {
+            const trigger = document.getElementById("personInfoTrigger");
+            if (trigger) {
+                trigger.click();
+            }
+        }
+    }
+
+    function refresh() {
         ContextManager.getInstance().upStateCounter();
         const ctx = ContextManager.getInstance().getContext();
         setStateCounter(ctx.stateCounter as number);
@@ -63,8 +74,9 @@ function PersonInfoContent() {
     const data = selectedPerson?.getData();
     if (data && data?.id) {
         return (
-            <div ref={personInfoRef} className='person-info-content'>
+            <div className='person-info-content'>
                 {getPersonInfoSection(data)}
+                <button id="personInfoTrigger" ref={buttonRef} hidden type="button" onClick={refresh} />
             </div>
         )
     } else {
