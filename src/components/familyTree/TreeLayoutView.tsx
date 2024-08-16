@@ -122,7 +122,6 @@
           const key = 'to-' + from + '-' +  target;
           const edge = { id: key, source: from, target: target, type: 'step', animated: false };
           if (!isDuplicate(edge)) {
-            // console.log('edge ' + edge.id);
             initialEdges.push(edge);
           }
           
