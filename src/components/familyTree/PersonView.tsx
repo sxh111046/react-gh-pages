@@ -3,7 +3,6 @@ import '../../styles/FamilyTreeView.css';
 import Person from '../../utils/Person';
 import Hyperlink from '../common/Hyperlink';
 import ContextManager from '../../utils/ContextManager';
-import GEDTooltip from '../common/GEDTooltip';
 
 export interface PersonViewProps {
     person: Person;
@@ -35,13 +34,13 @@ function PersonView (props: PersonViewProps) {
       const ctx = ContextManager.getInstance().getContext();
       const collapsedSubtrees = ctx.collapsedSubtrees;
       if (collapsedSubtrees?.includes(props.person)) {
-        return (<>
+        return (
             <img id="expandImage" className="expand-image" alt=' '/>
-          </>);
+          );
       } else {
-        return( <>
+        return(
             <img id="collapseImage" className="collapse-image" alt=' '/>
-        </>);
+          );
       }
     }
 
