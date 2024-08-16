@@ -37,12 +37,10 @@ function PersonView (props: PersonViewProps) {
       if (collapsedSubtrees?.includes(props.person)) {
         return (<>
             <img id="expandImage" className="expand-image" alt=' '/>
-            <GEDTooltip anchorSelect="expandImage" content="Expand Branch" place="top" />
           </>);
       } else {
         return( <>
             <img id="collapseImage" className="collapse-image" alt=' '/>
-            <GEDTooltip anchorSelect="collapseImage" content="Collapse Branch" place="top" />
         </>);
       }
     }
