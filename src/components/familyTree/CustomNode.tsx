@@ -18,7 +18,6 @@ type CustomNode = Node<NodeData>;
  
 function CustomNode({ data }: NodeProps<NodeData>) {
 
-  // const updateNodeInternals = useUpdateNodeInternals();
   const p = data.value.person;
   const id = p.getID();
   if (p.isTopPerson()) {
@@ -35,9 +34,7 @@ function CustomNode({ data }: NodeProps<NodeData>) {
     background: '#fff',
     backgroundColor: "transparent",
     fontSize: 14,
-    // border: '1px solid lightgray',
     padding: 1,
-    //borderRadius: 12,
     height: 16,
   }
   

@@ -3,6 +3,7 @@ import '../../styles/FamilyTreeView.css';
 import Person from '../../utils/Person';
 import Hyperlink from '../common/Hyperlink';
 import ContextManager from '../../utils/ContextManager';
+import GEDTooltip from '../common/GEDTooltip';
 
 export interface PersonViewProps {
     person: Person;
@@ -22,9 +23,7 @@ function PersonView (props: PersonViewProps) {
     const pName = props.person.getName();
     const isSpouse = props.type === 'spouse';
     
-    // let gen = props.gen;
     const isTopPerson = p.isTopPerson();
-    // if (isTopPerson) gen = 0;
 
     let className = 'person-view' 
     if (props.person.isRoot()) className = '';
@@ -36,16 +35,21 @@ function PersonView (props: PersonViewProps) {
       const ctx = ContextManager.getInstance().getContext();
       const collapsedSubtrees = ctx.collapsedSubtrees;
       if (collapsedSubtrees?.includes(props.person)) {
-        return (<img className="expand-image" alt=' '/>);
+        return (<>
+            <img id="expandImage" className="expand-image" alt=' '/>
+            <GEDTooltip anchorSelect="expandImage" content="Expand Branch" place="top" />
+          </>);
       } else {
-        return( <img className="collapse-image" alt=' '/>);
+        return( <>
+            <img id="collapseImage" className="collapse-image" alt=' '/>
+            <GEDTooltip anchorSelect="collapseImage" content="Collapse Branch" place="top" />
+        </>);
       }
     }
 
     if (props.hyperlink) {
       if (props.person.isRoot() || isTopPerson) {
         className = 'person-view'; //'top-person';
-        // gen = 0;
       }
         return (
           <>
