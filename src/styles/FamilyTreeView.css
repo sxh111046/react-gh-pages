@@ -39,7 +39,7 @@
   }
 
   .tree-index-container {
-    width: 16%;
+    width: 18%;
     float: left;
     display: block;
     font-size: medium;
@@ -240,7 +240,7 @@
   }
 
   .person-view-F {
-    color:rgb(255, 0, 174);
+    color:rgb(157, 12, 145)
   }
 
 .person-view:hover {

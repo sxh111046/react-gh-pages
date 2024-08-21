@@ -21,14 +21,22 @@ function PersonView (props: PersonViewProps) {
     const p = props.person;
     const pName = props.person.getName();
     const isSpouse = props.type === 'spouse';
-    
-    const isTopPerson = p.isTopPerson();
+    const sex = p.getData().sex as string;
 
-    let className = 'person-view' + " " + "person-view" + "-" + p.getData().sex;
+    let className = 'person-view';
+    className = className.concat( " ", "person-view", "-", sex);
  
     let title = pName;
+    const birth = props.person.getBirthYear();
+    const death = props.person.getDeathYear();
     if (isSpouse)  title = 'sp: ' + pName;
-
+    if (birth || death) {
+      title += ' (';
+      if (birth) title += ' b. ' + birth;
+      if (death) title += ' d. ' + death;
+      title += ' )';
+    }
+   
     function getCollapseImage(): JSX.Element {
       const ctx = ContextManager.getInstance().getContext();
       const collapsedSubtrees = ctx.collapsedSubtrees;
