@@ -24,8 +24,7 @@ function PersonView (props: PersonViewProps) {
     
     const isTopPerson = p.isTopPerson();
 
-    let className = 'person-view' 
-    if (props.person.isRoot()) className = '';
+    let className = 'person-view' + " " + "person-view" + "-" + p.getData().sex;
  
     let title = pName;
     if (isSpouse)  title = 'sp: ' + pName;
@@ -45,9 +44,6 @@ function PersonView (props: PersonViewProps) {
     }
 
     if (props.hyperlink) {
-      if (props.person.isRoot() || isTopPerson) {
-        className = 'person-view'; //'top-person';
-      }
         return (
           <>
             <div key={'pv-' + p.getID()} className={className} style={{ paddingLeft: 4 + 'px' }}>
@@ -55,6 +51,7 @@ function PersonView (props: PersonViewProps) {
                     <Hyperlink 
                       linkID={p.getID()} 
                       title={title} 
+                      class={className}
                       callback={props.callback} 
                       />} 
             </div>

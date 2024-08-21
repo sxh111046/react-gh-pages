@@ -21,7 +21,7 @@ class Hyperlink extends React.Component {
     render() {
         return (
             <div className = {this.props.class}> 
-                <a id={this.props.linkID} onClick={(event: any) => this.props.callback(event)} href='#'>{this.props.title}</a><span>  </span>{this.props.image}
+                <a id={this.props.linkID} className = {this.props.class} onClick={(event: any) => this.props.callback(event)} href='#'>{this.props.title}</a><span>  </span>{this.props.image}
             </div>
         )
     }

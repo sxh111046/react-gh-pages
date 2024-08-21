@@ -122,6 +122,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
+    font-size: medium;
+    font-weight: 600;
 }
 
 .tree-index-person-text:hover {
@@ -230,6 +232,15 @@
     display:inline-block;
     align-content:start;
     font-size: medium;
+    font-weight: 600;
+  }
+
+  .person-view-M {
+    color:blue;
+  }
+
+  .person-view-F {
+    color:rgb(255, 0, 174);
   }
 
 .person-view:hover {

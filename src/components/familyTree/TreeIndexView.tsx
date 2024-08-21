@@ -61,10 +61,11 @@ import SubtreeGenerator from '../../utils/SubtreeGenerator';
 
     function getFamilyIndexView(): JSX.Element[] {
       const familyIndexView = new Array<JSX.Element>();
+      const className = 'family-index-person tree-index-person-text ';
       {familyIndex?.forEach((value) => {
         familyIndexView.push( <div key={value.index}><strong>{value.index}</strong></div>);
               {value.links?.forEach((link) => {
-                familyIndexView.push(<div key={link.getID()} id={'index-' + link.getID()} className='family-index-person tree-index-person-text'><Hyperlink linkID={link.getID()} title={link.getName()} callback={handleIndexClick} /></div>);
+                familyIndexView.push(<div key={link.getID()} id={'index-' + link.getID()} className={className + 'person-view-' + link.getData().sex}><Hyperlink class={className + 'person-view-' + link.getData().sex} linkID={link.getID()} title={link.getName()} callback={handleIndexClick} /></div>);
               })}
         })}
         return familyIndexView;
@@ -146,12 +147,13 @@ import SubtreeGenerator from '../../utils/SubtreeGenerator';
     }
 
     function getIndexList():JSX.Element {
+      const className = 'tree-index-person-text person-view-';
       return (
         <div className="tree-index-container-list">
                 {byPerson &&
                     <div className={indexClass}> 
                         {pIndex.map((value, index) => {
-                            return (<div key={index} id={'index-' + value.id} className='tree-index-person-text'><Hyperlink linkID={value.id} title={value.name} callback={handleIndexClick} /></div>)
+                            return (<div key={index} id={'index-' + value.id} className={className + value.p?.getData().sex}><Hyperlink linkID={value.id} class={className + value.p?.getData().sex} title={value.name} callback={handleIndexClick} /></div>)
                           })}
                     </div> }
                 {byFamily &&
@@ -161,8 +163,8 @@ import SubtreeGenerator from '../../utils/SubtreeGenerator';
                 }
         </div>
       )
+    
     }
-
     let searchValue = '';
 
     function performSearch(){
