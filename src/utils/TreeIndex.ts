@@ -295,7 +295,7 @@ class TreeIndex {
 		if (isSpouse && selectedPerson.hasParentBranch()) {
 		  const ancestorFamily = selectedPerson.getAncestorFamily();
 		  const husband = ancestorFamily?.getData().husband;
-		  if (husband) ctx.subtreeRoot = ancestorFamily?.getData().husband;
+		  if (husband) ctx.subtreeRoot = husband;
 		  ctx.selectedPerson = selectedPerson;
 		}
 		else if (pID !== subtreeRootID && isRelated && !indexSelection ) {

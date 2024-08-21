@@ -52,7 +52,7 @@ const PersonActionMenu: React.FC = (): JSX.Element => {
               subtreeGenerator.generateAncestorPath(rootPerson, selectedPerson);
             } 
           }
-          ctx.subtreeRoot = rootPerson;
+          if (rootPerson) ctx.subtreeRoot = rootPerson;
           const onIndexSelect = ctx.onIndexSelect;
           setTimeout(() => {
             if (onIndexSelect) onIndexSelect();
