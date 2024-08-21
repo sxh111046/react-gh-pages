@@ -132,7 +132,7 @@ class TreeIndex {
 	public getPersonIndex(): PersonIndex[] {
 		const nameList = new Array<PersonIndex>();
 		this.personIndex.forEach((value: Person, key: string) => {
-			const entry = {id: value.getData().id, name: value.getIndexName()};
+			const entry = {id: value.getData().id, name: value.getIndexName(), p:value};
 			// ßconsole.log(entry.id + ' ' + entry.name);
 			nameList.push(entry);
 		})
