@@ -1,7 +1,5 @@
 
 
-import ContextManager from './ContextManager';
-
 class ErrorHandler {
 
     constructor( message: string, ex?: any) {
