@@ -1,11 +1,10 @@
-import FamilyTreeParser from "./FamilyTreeParser";
+
 import Family from '../utils/Family';
 import {PersonData} from '../types/PersonData';
 import ContextManager from "./ContextManager";
 
 class Person {
     private personData: PersonData = {};
-    // private ctxManager: ContextManager = ContextManager.getInstance();
 
     constructor ()
     {

@@ -30,11 +30,13 @@ function PersonView (props: PersonViewProps) {
     const birth = props.person.getBirthYear();
     const death = props.person.getDeathYear();
     if (isSpouse)  title = 'sp: ' + pName;
-    if (birth || death) {
-      title += ' (';
-      if (birth) title += ' b. ' + birth;
-      if (death) title += ' d. ' + death;
-      title += ' )';
+    if (birth && death) {
+      title += ' ( b. ' + birth + ', d. ' + death + ' )';
+    } else if (birth || death) {
+        title += ' (';
+        if (birth) title += ' b. ' + birth;
+        if (death) title += ' d. ' + death;
+        title += ' )';
     }
    
     function getCollapseImage(): JSX.Element {
